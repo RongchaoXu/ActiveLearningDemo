@@ -4,9 +4,11 @@ import os
 from shutil import copyfile
 
 
-def plot(result, saving_path='a.png'):
-    arr = np.asarray(result, dtype=np.float32)
-    plt.plot(arr)
+def plot(saving_path, **results):
+    for name, result in results.items():
+        arr = np.asarray(result, dtype=np.float32)
+        plt.plot(arr, label=name)
+    plt.legend()
     plt.savefig(saving_path)
 
 
